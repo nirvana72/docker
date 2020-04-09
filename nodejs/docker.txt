@@ -1,0 +1,2 @@
+# 创建 nodejs 容器
+docker run --name=nodejs -itd -p 8080:8080 -v D:/workspace:/workspace nirvana72/vue-dev:nodejs-10_vuecli-4
