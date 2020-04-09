@@ -2,7 +2,7 @@
 # nginx + php + mysql 环境
 # 三个服务分别创建三个容器
 # 由于服务之前用到 link 引用，所以创建顺序需要从 mysql -> php -> nginx 严格执行，否则后建的容器引用不到服务
-
+# 容器开启时，貌似也需要按照这个顺序
 
 # 创建 mysql 容器
 docker run --name=mysql -d -p 3306:3306 -v D:/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v D:/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
