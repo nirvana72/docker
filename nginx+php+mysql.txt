@@ -1,18 +1,17 @@
 
 # nginx + php + mysql 环境
 # 三个服务分别创建三个容器
-# 由于服务之前用到 link 引用，所以创建顺序需要从 mysql -> php -> nginx 严格执行，否则后建的容器引用不到服务
+# 由于服务之间用到 link 引用，所以创建顺序需要从 mysql -> php -> nginx 严格执行，否则后建的容器引用不到服务
 # 容器开启时，貌似也需要按照这个顺序
 
 # 创建 mysql 容器
-docker run --name=mysql -d -p 3306:3306 -v D:/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v D:/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
+docker run --name=mysql -d -p 3306:3306 -v {$psth}/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v {$psth}/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
 
 # 创建 php服务 容器
-docker run --name=phpserver -d -v D:/workspace:/workspace --link mysql:mysql nirvana72/php-env:7.4-fpm-alpine
+docker run --name=phpserver -d -v {$psth}/workspace:/workspace --link mysql:mysql nirvana72/php-env:7.4-fpm-alpine
 
 # 创建 nginx 容器
-docker run --name=nginx -d -p 80:80 -v D:/workspace:/workspace -v D:/docker/nginx/conf.d:/etc/nginx/conf.d:ro --link phpserver:phpserver nginx:1.17-alpine
+docker run --name=nginx -d -p 80:80 -v {$psth}/workspace:/workspace -v {$psth}/docker/nginx/conf.d:/etc/nginx/conf.d:ro --link phpserver:phpserver nginx:1.17-alpine
 
 # 进入容器命令
 # docker exec -it nginx bash
-
