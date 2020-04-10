@@ -1,2 +1,11 @@
 # 创建 nodejs 容器
-docker run --name=nodejs -itd -p 8080:8080 -v D:/workspace:/workspace nirvana72/vue-dev:nodejs-10_vuecli-4
+docker run --name=nodejs -itd -p 8080:8080 -v D:/workspace:/workspace nirvana72/nodejs:v12.16.2
+
+
+docker run --name=nodejs -itd -p 8080:8080 -p 1337:1337 -v D:/workspace:/workspace node:12.16.2-alpine
+
+npm config set registry https://registry.npm.taobao.org
+
+npm install -g @vue/cli
+
+npm install sails -g
