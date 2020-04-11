@@ -1,5 +1,10 @@
 > 以下docker 命令中的 {$path} 先替换成具体目录后再执行
 
+# 添加国内镜像
+~~~
+https://Owrdwnn6.mirror.aliyuncs.com
+~~~
+
 # nginx+php+mysql
 #### 1.link 引用方式
 三个服务分别创建三个容器， 由于服务之间用到 link 引用，所以创建顺序需要从
