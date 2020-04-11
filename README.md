@@ -17,7 +17,7 @@ docker run --name=mysql -d
 -p 3306:3306 -v {$psth}/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v {$psth}/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
 
 # 创建 php服务 容器
-docker run --name=phpserver -d -v {$psth}/workspace:/workspace --link mysql:mysql nirvana72/php-env:7.4-fpm-alpine
+docker run --name=phpserver -d -v {$psth}/workspace:/workspace -v {$psth}/docker/php/docker-php-ext-sodium.ini:/usr/local/etc/php/conf.d/docker-php-ext-sodium.ini --link mysql:mysql nirvana72/php:7.4-fpm-alpine
 
 # 创建 nginx 容器
 docker run --name=nginx -d -p 80:80 -v {$psth}/workspace:/workspace -v {$psth}/docker/nginx/conf.d:/etc/nginx/conf.d:ro --link phpserver:phpserver nginx:1.17-alpine
@@ -36,7 +36,7 @@ docker network ls
 # mysql 容器
 docker run -d --name=mysql -p 3306:3306 -v {$psth}/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v {$psth}/docker/mysql/data:/var/lib/mysql --network dev_net --network-alias mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
 # php 容器
-docker run --name=phpserver -d -v {$psth}/workspace:/workspace --network dev_net --network-alias phpserver nirvana72/php-env:7.4-fpm-alpine
+docker run --name=phpserver -d -v {$psth}/workspace:/workspace -v {$psth}/docker/php/docker-php-ext-sodium.ini:/usr/local/etc/php/conf.d/docker-php-ext-sodium.ini --network dev_net --network-alias phpserver nirvana72/php:7.4-fpm-alpine
 # nginx 容器
 docker run --name=nginx -d -p 80:80 -v {$psth}/workspace:/workspace -v {$psth}/docker/nginx/conf.d:/etc/nginx/conf.d:ro --network dev_net --network-alias nginx nginx:1.17-alpine
 ~~~
@@ -64,10 +64,10 @@ composer config -g repo.packagist composer https://packagist.phpcomposer.com
 一个可视化docker 管理UI
 ~~~
 # linux
-docker run -d -p 9000:9000 --name portainer --restart=always -v {$path}/docker/portainer:/var/run/docker.sock portainer/portainer
+docker run -d -p 9000:9000 --name portainer -v {$path}/docker/portainer:/var/run/docker.sock portainer/portainer
 
 # windows
-docker run -d -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v {$path}/docker/Portainer:/data portainer/portainer
+docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/docker.sock -v {$path}/docker/Portainer:/data portainer/portainer
 ~~~
 
 
