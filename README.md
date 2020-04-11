@@ -55,6 +55,17 @@ docker run -dit --name=composer -v {$psth}/workspace:/workspace -w /workspace co
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 ~~~
 
+# portainer
+一个可视化docker 管理UI
+~~~
+# linux
+docker run -d -p 9000:9000 --name portainer --restart=always -v {$path}/docker/portainer:/var/run/docker.sock portainer/portainer
+
+# windows
+docker run -d -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v {$path}/docker/Portainer:/data portainer/portainer
+~~~
+
+
 # volume 使用
 - volume  是指为了适应不同系统的目录结构，而一些数据又需要持久化在宿主机上，所以在docker系统目录下创建一个带别外的存储空间给容器作持久化使用
 - 默认目录应该是在docker安装目录下，可以用docker inspect查看，windows由于docker是装在虚拟机上的，所以目录也在虚拟机上
@@ -78,3 +89,6 @@ docker volume rm edc-nginx-vol
 # 进入容器命令
  docker exec -it nginx bash
 ~~~
+
+
+
