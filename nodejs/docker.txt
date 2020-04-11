@@ -1,9 +1,0 @@
-# 创建 nodejs 容器
-docker run --name=nodejs -itd -p 8080:8080 -v D:/workspace:/workspace nirvana72/nodejs:v12.16.2
-
-
-docker run --name=nodejs -itd -p 8080:8080 -v D:/workspace:/workspace -w /workspace node:12.16.2-alpine
-
-npm config set registry https://registry.npm.taobao.org
-
-npm install -g @vue/cli
