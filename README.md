@@ -14,13 +14,13 @@ mysql -> php -nginx
 ~~~
 # 创建 mysql 容器
 docker run --name=mysql -d 
--p 3306:3306 -v {$psth}/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v {$psth}/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
+-p 3306:3306 -v {$pash}/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v {$pash}/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
 
 # 创建 php服务 容器
-docker run --name=phpserver -d -v {$psth}/workspace:/workspace -v {$psth}/docker/php/docker-php-ext-sodium.ini:/usr/local/etc/php/conf.d/docker-php-ext-sodium.ini --link mysql:mysql nirvana72/php:7.4-fpm-alpine
+docker run --name=phpserver -d -v {$pash}/workspace:/workspace -v {$pash}/docker/php/docker-php-ext-sodium.ini:/usr/local/etc/php/conf.d/docker-php-ext-sodium.ini --link mysql:mysql nirvana72/php:7.4-fpm-alpine
 
 # 创建 nginx 容器
-docker run --name=nginx -d -p 80:80 -v {$psth}/workspace:/workspace -v {$psth}/docker/nginx/conf.d:/etc/nginx/conf.d:ro --link phpserver:phpserver nginx:1.17-alpine
+docker run --name=nginx -d -p 80:80 -v {$pash}/workspace:/workspace -v {$pash}/docker/nginx/conf.d:/etc/nginx/conf.d:ro --link phpserver:phpserver nginx:1.17-alpine
 ~~~
 
 #### 2.bridge网络方式
@@ -34,17 +34,17 @@ docker network ls
 
 ~~~
 # mysql 容器
-docker run -d --name=mysql -p 3306:3306 -v {$psth}/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v {$psth}/docker/mysql/data:/var/lib/mysql --network dev_net --network-alias mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
+docker run -d --name=mysql -p 3306:3306 -v {$pash}/docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -v {$pash}/docker/mysql/data:/var/lib/mysql --network dev_net --network-alias mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29
 # php 容器
-docker run --name=phpserver -d -v {$psth}/workspace:/workspace -v {$psth}/docker/php/docker-php-ext-sodium.ini:/usr/local/etc/php/conf.d/docker-php-ext-sodium.ini --network dev_net --network-alias phpserver nirvana72/php:7.4-fpm-alpine
+docker run --name=phpserver -d -v {$pash}/workspace:/workspace -v {$pash}/docker/php/docker-php-ext-sodium.ini:/usr/local/etc/php/conf.d/docker-php-ext-sodium.ini --network dev_net --network-alias phpserver nirvana72/php:7.4-fpm-alpine
 # nginx 容器
-docker run --name=nginx -d -p 80:80 -v {$psth}/workspace:/workspace -v {$psth}/docker/nginx/conf.d:/etc/nginx/conf.d:ro --network dev_net --network-alias nginx nginx:1.17-alpine
+docker run --name=nginx -d -p 80:80 -v {$pash}/workspace:/workspace -v {$pash}/docker/nginx/conf.d:/etc/nginx/conf.d:ro --network dev_net --network-alias nginx nginx:1.17-alpine
 ~~~
 
 # nodejs 容器
 ~~~
 # 创建
-docker run --name=nodejs -itd -p 8080:8080 -v  {$psth}/workspace:/workspace -w /workspace node:12.16.2-alpine
+docker run --name=nodejs -itd -p 8080:8080 -v  {$pash}/workspace:/workspace -w /workspace node:12.16.2-alpine
 # 修改 npm 镜像源
 npm config set registry https://registry.npm.taobao.org
 # 安装 vue-cli 4.0
@@ -55,7 +55,7 @@ npm install -g @vue/cli
 如果不想在容器内装 composer ，又要为php项目安装依赖，创建一个composer容器临时用一下
 ~~~
 # 创建 composer 容器， 为 php 项目安装依赖用
-docker run -dit --name=composer -v {$psth}/workspace:/workspace -w /workspace composer:latest /bin/bash
+docker run -dit --name=composer -v {$pash}/workspace:/workspace -w /workspace composer:latest /bin/bash
 # 更新国内仓库镜像
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 ~~~
