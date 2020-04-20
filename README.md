@@ -2,7 +2,9 @@
 
 # 添加国内镜像
 ~~~
-https://Owrdwnn6.mirror.aliyuncs.com
+"https://registry.docker-cn.com",
+"http://hub-mirror.c.163.com",
+"https://docker.mirrors.ustc.edu.cn"
 ~~~
 
 # nginx+php+mysql
