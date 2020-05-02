@@ -1,8 +1,8 @@
 server {
     listen       80;
-    server_name php.nij.local;
+    server_name jsd.video.local;
     index index.php index.html;
-    root /workspace/demo.shell;
+    root /workspace/jsd.5pai8.video;
     #error_log /www/docker/nginx/log/error.log;
     #access_log /www/docker/nginx/log//access.log;
 

@@ -2,7 +2,7 @@ server {
     listen       80;
     server_name php.nij.local;
     index index.php index.html;
-    root /workspace/demo.shell;
+    root /workspace/nij.php/public;
     #error_log /www/docker/nginx/log/error.log;
     #access_log /www/docker/nginx/log//access.log;
 

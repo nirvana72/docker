@@ -96,6 +96,3 @@ docker volume rm edc-nginx-vol
 # 进入容器命令
  docker exec -it nginx bash
 ~~~
-
-
-
