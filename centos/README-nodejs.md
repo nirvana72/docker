@@ -44,4 +44,8 @@ source ~/.bash_profile
 
 node -v
 npm -v
+
+# 避免每次都要执行 source ~/.bash_profile
+# vim .bashrc
+> PATH=$PATH:$HOME/bin:/usr/src/node/bin
 ~~~

@@ -15,17 +15,14 @@ yum -y install vim-enhanced
 
 
 # 安装前要手动安装下依赖包
-yum install -y wget
-yum install -y gcc-c++
-yum install -y zlib-devel perl-ExtUtils-MakeMaker
-yum install -y gettext
-yum install -y make
+yum install -y wget gcc-c++ zlib-devel perl-ExtUtils-MakeMaker gettext libcurl-devel curl-devel make
 
 # 去官网下载最新版本的git源码包
-wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.0.tar.gz
+wget https://www.kernel.org/pub/software/scm/git/git-2.26.2.tar.xz
 
 # 接下来就是解压，配置，安装
-tar -zxvf git-2.9.0.tar.gz
+xz -d git-2.26.2.tar.xz
+tar xvf git-2.26.2.tar
 cd git-2.9.0
 ./configure --prefix=/usr/local
 make
@@ -54,6 +51,3 @@ ssh-keygen -t rsa -C "15279663@qq.com"
 # 测试连接
 ssh git@github.com
 ~~~
-
-
- docker run --name=centos7_test -p 80:80 -v D:/workspace:/workspace -itd centos:7
