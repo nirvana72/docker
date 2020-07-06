@@ -23,7 +23,7 @@ wget https://www.kernel.org/pub/software/scm/git/git-2.26.2.tar.xz
 # 接下来就是解压，配置，安装
 xz -d git-2.26.2.tar.xz
 tar xvf git-2.26.2.tar
-cd git-2.9.0
+cd git-2.26.2
 ./configure --prefix=/usr/local
 make
 sudo make install
