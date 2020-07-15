@@ -10,11 +10,4 @@
 
 
 
-
-
-
- docker run --name=gitlab-runner-vue -p 8080:8080 --privileged=true -v /Users/nijia/workspace:/workspace -itd centos:7 /usr/sbin/init
-
-
-
- curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | bash
+docker run --name=node-14.5.0-alpine -p 8080-8090:8080-8090 --privileged=true -v E:/workspace:/workspace -itd node:14.5.0-alpine /usr/sbin/init
