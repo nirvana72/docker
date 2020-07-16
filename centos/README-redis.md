@@ -1,1 +1,1 @@
-docker run --name=redis-6.0.5-alpine -d -p 6379:6379 redis:6.0.5-alpine
+docker run --name=redis-6.0.5-alpine --network dev_net -d -p 6379:6379 redis:6.0.5-alpine

@@ -8,7 +8,7 @@ docker run --name=centos7-java -itd -p 8080:8080 -v /Users/nijia/workspace:/work
 yum install -y which zip unzip
 
 // java 
-yum install java-1.8.0-openjdk* -y
+yum install -y java-1.8.0-openjdk*
 
 // Maven
 yum install -y maven 

@@ -1,5 +1,9 @@
 # centos gitlab安装
 
+docker run --name=gitlab -p 9000:9000 --privileged=true -itd centos:7 /usr/sbin/init
+   // --restart always
+
+
 ### 安装依赖
 ~~~
 yum update
@@ -39,6 +43,12 @@ rpm -i gitlab-ce-13.1.2-ce.0.el7.x86_64.rpm
 ~~~
 vim  /etc/gitlab/gitlab.rb
 external_url 'http://gitlab.nij.local'
+
+# 如果使用端口号
+# external_url 'http://gitlab.nij.local:9000'
+# 防火墙开放端口
+# firewall-cmd --zone=public --add-port=9000/tcp --permanent
+# firewall-cmd --reload
 ~~~
 
 # 重启

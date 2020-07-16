@@ -1,1 +1,1 @@
-docker run --name=mysql -d -p 3306:3306 -v E:/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
+docker run --name=mysql-5.7 --network dev_net -d -p 3306:3306 -v E:/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
