@@ -1,15 +1,15 @@
 # centos gitlab安装
 
 docker run --name=gitlab -p 9000:9000 --privileged=true -itd centos:7 /usr/sbin/init
-   // --restart always
+// --restart always
 
 
 ### 安装依赖
 ~~~
-yum update
+yum update -y
 yum install -y curl policycoreutils-python openssh-server wget vim firewalld postfix
 systemctl enable sshd
-systemctl start sshd
+systemctl start sshd // 需要root权限 --privileged=true
 ~~~
 
 ### 防火墙
@@ -83,9 +83,20 @@ ff02::2	ip6-allrouters
 3. 3 升级默认的git 版本至  2.26
 > README-git.MD
 
-
-4. 注册 runner
+4. 1 注册 runner
 > https://docs.gitlab.com/runner/register/index.html
+> gitlab-runner register
+
+4. 2 查看runner 配置文件  
+> cat ~/.gitlab-runner/config.toml
+
+4. 3 查看注册的runner 
+> gitlab-runner list
+
+4. 4 删除注册的runner 
+> gitlab-runner verify --delete --name "name"
+
+
 
 5. 项目中写 gitlab-ci.yml
 ~~~
