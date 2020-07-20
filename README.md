@@ -59,7 +59,7 @@ npm install -g @vue/cli
 # 创建 composer 容器， 为 php 项目安装依赖用
 docker run -dit --name=composer -v {$path}/workspace:/workspace -w /workspace composer:latest /bin/bash
 # 更新国内仓库镜像
-composer config -g repo.packagist composer https://packagist.phpcomposer.com
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ~~~
 
 # portainer
