@@ -57,7 +57,7 @@ gitlab-ctl reconfigure
 # 如果这一步卡住， 新开一个终端 /opt/gitlab/embedded/bin/runsvdir-start
 
 gitlab-ctl restart
-# 重启失败 执行 /opt/gitlab/embedded/bin/runsvdir-start
+# 重启失败的话先执行 /opt/gitlab/embedded/bin/runsvdir-start
 ~~~
 
 
@@ -87,6 +87,8 @@ ff02::2	ip6-allrouters
 4. 注册 runner
 > https://docs.gitlab.com/runner/register/index.html
 
+> 注册成功可以查看注册配置信息
+> cat ~/.gitlab-runner/config.toml // 仅 mac 下测试
 5. 项目中写 gitlab-ci.yml
 ~~~
 stages:
