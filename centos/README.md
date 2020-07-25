@@ -5,7 +5,7 @@
 ~~~
  # https://www.bt.cn/btcode.html
 
- docker run --name=baota -p 80:80 -p 443:443 -p 3306:3306 -p 8888-8900:8888-8900 --privileged=true -v E:/workspace:/workspace -itd baota:v1.2 /usr/sbin/init
+ docker run --name=baota -p 80:80 -p 443:443 -p 3306:3306 -p 8888:8888 --privileged=true -v E:/workspace:/workspace -itd baota:v1.2 /usr/sbin/init
 ~~~
 
  
