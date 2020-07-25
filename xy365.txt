@@ -1,0 +1,10 @@
+大健康微信公众平台  小程序
+lbxiangyang365@163.com
+LBCS123456
+
+测试服务器
+47.111.100.169 
+root 123qwe@@
+
+portainer
+admin 123qwe@@
