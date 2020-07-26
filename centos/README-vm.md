@@ -49,3 +49,9 @@ VMBOX ->管理 ->全局 -> 网络 -> 端口转发 -> 新建
 TCP  主机IP 127.0.0.1:2000 子系统IP 10.0.2.4:22
 xshell 配置连接
 ~~~
+
+### 互相之间免密登录 
+https://www.bilibili.com/video/BV1P4411y7ti 4:40
+
+### 本地仓库搭建
+https://www.bilibili.com/video/BV1P4411y7ti 14:00

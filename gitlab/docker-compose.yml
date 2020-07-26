@@ -1,0 +1,40 @@
+version: '2'
+services:
+    gitlab:
+      image: 'gitlab/gitlab-ce:13.2.0-ce.0'
+      container_name: gitlab
+      # restart: always
+      hostname: 'gitlab'
+      environment:
+        TZ: 'Asia/Shanghai'
+        GITLAB_OMNIBUS_CONFIG: |
+          external_url 'http://gitlab.lan8.cn'
+          gitlab_rails['time_zone'] = 'Asia/Shanghai'
+          # 需要配置到 gitlab.rb 中的配置可以在这里配置，每个配置一行，注意缩进。
+          # 比如下面的电子邮件的配置：
+          # gitlab_rails['smtp_enable'] = true
+          # SMTP服务器：smtp.qq.com 这里我使用的事qq邮箱
+          # gitlab_rails['smtp_address'] = "smtp.qq.com"
+          # 端口不可以选择 587，保持默认
+          # gitlab_rails['smtp_port'] = 465
+          # 你的邮箱账号
+          # gitlab_rails['smtp_user_name'] = "xxxx@xx.com"
+          # 授权码，不是密码
+          # gitlab_rails['smtp_password'] = "password"
+          # gitlab_rails['smtp_authentication'] = "login"
+          # gitlab_rails['smtp_enable_starttls_auto'] = true
+          # gitlab_rails['smtp_tls'] = true
+          # 这里的邮箱账号和上面保持一致
+          # gitlab_rails['gitlab_email_from'] = 'xxxx@xx.com'
+          # 这是 ssh 的端口号
+          # gitlab_rails['gitlab_shell_ssh_port'] = 2222
+          # unicorn['port'] = 8888
+          # nginx['listen_port'] = 8089
+      ports:
+        - '9001:80'
+        # - '8443:443'
+        # - '2222:22'
+      volumes:
+        - /etc/gitlab:/etc/gitlab
+        - /var/opt/gitlab:/var/opt/gitlab
+        - /var/log/gitlab:/var/log/gitlab

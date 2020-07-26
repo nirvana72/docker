@@ -8,3 +8,19 @@ root 123qwe@@
 
 portainer
 admin 123qwe@@
+
+
+docker run --name gitlab -d \
+-v gitlab/config:/etc/gitlab \
+-v gitlab/repo:/var/opt/gitlab \
+-v gitlab/log:/var/log/gitlab \
+-p -p8001:80 \
+gitlab/gitlab-ce:13.1.5-ce.0
+
+
+docker run --name gitlab -itd --privileged=true -v E:/docker/gitlab/config:/etc/gitlab -v E:/docker/gitlab/repo:/var/opt/gitlab -v E:/docker/gitlab/log:/var/log/gitlab -p 8001:80 gitlab/gitlab-ce:13.1.5-ce.0
+
+docker run --name=gitlab -d -v gitlab_config:/etc/gitlab -v gitlab_repo:/var/opt/gitlab -v gitlab_log:/var/log/gitlab -p 8001:80 gitlab/gitlab-ce:13.1.5-ce.0
+
+
+docker run --name=gitlab2 -d -v gitlab_config2:/etc/gitlab -v gitlab_repo2:/var/opt/gitlab -v gitlab_log2:/var/log/gitlab -p 8002:80 gitlab/gitlab-ce:13.1.5-ce.0

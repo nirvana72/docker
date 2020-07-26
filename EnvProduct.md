@@ -18,6 +18,21 @@ docker run -d -p 9000:9000 --name=portainer -v /var/run/docker.sock:/var/run/doc
 开放9000端口
 访问 http://ip:9000
 
+## gitlab
+下拉镜像(特慢， 可以使用 docker save | docker load )
+docker pull gitlab/gitlab-ce:13.1.5-ce.0
+
+创建容器
+docker run --name=gitlab -d -v /etc/gitlab:/etc/gitlab -v /var/opt/gitlab:/var/opt/gitlab -v /var/log/gitlab:/var/log/gitlab -p 9001:80 gitlab/gitlab-ce:13.1.5-ce.0
+
+迁移
+备份
+gitlab-rake gitlab:backup:create
+会生成 /var/opt/gitlab/backups/xxxx_gitlab_backup.tar
+
+复制到新环境同目录下还原备份
+gitlab-rake gitlab:backup:restore BACKUP=xxxx // 只要xxxx
+
 ## nginx
 安装
 sudo yum install nginx
@@ -28,7 +43,7 @@ sudo systemctl restart nginx
 查看
 ps -ef |grep nginx
 配置文件
-/etc/nginx/conf.d
+cd /etc/nginx/conf.d
 转发配置
 ~~~
 # xxx.conf
