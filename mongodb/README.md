@@ -15,6 +15,8 @@ docker exec -it mongo mongo xy365
 db.auth('xy365', '123456')
 
 db.t_article.insert({title: 'aaaa', subtitle:'bbbbb', type: 'rich'})
+db.t_article.insert({title: 'xxx', subtitle:'bbbbb', type: 'rich', tag: 'aaa'})
+db.t_article.insert({title: 'yyy', name: 'name'})
 db.t_article.insert({title: 'aaaa1', subtitle:'bbbbb', type: 'rich'})
 db.t_article.insert({title: 'aaaa2', subtitle:'bbbbb', type: 'rich'})
 db.t_article.insert({title: 'aaaa3', subtitle:'bbbbb', type: 'rich'})
@@ -44,25 +46,14 @@ db.auth('root', '123456')
 db.getUsers()
 
 
-
+### 编译生成 mongodb.so
 wget https://pecl.php.net/get/mongodb-1.8.0.tgz
 
+tar zxvf mongodb-1.8.0.tgz
+cd mongodb-1.8.0
+phpize
+./configure
+make && make install
 
-
-./configure --with-php-config=/www/server/php/74/etc/php-config
-
-/www/server/php/74/bin/pecl install mongodb
-
+### php 安装mongodb操作库
 composer require mongodb/mongodb
-
-
-docker run --name=phptest -d php:7.4.8-apache
-
-
-docker run --name=phptest -d php:7.4.8-apache
-docker cp mongodb-1.8.0.tgz centos7_test:/home
-docker exec -it phptest /bin/bash
-docker cp centos7_test:/home/mongodb-1.8.0/modules/mongodb.so mongodb.so
-docker stop phptest
-
-docker rm phptest
