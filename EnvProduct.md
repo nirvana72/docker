@@ -18,6 +18,15 @@ docker run -d -p 9000:9000 --name=portainer -v /var/run/docker.sock:/var/run/doc
 开放9000端口
 访问 http://ip:9000
 
+## 主机 portainer 添加 endpoint
+从机docker 开放 2375端口
+~~~
+$ vi /usr/lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375
+~~~
+主机添加 endpoint -> docker
+name 随便， endpoint 内网IP：2475  publicip 
+
 ## gitlab
 下拉镜像(特慢， 可以使用 docker save | docker load )
 docker pull gitlab/gitlab-ce:13.1.5-ce.0
@@ -61,7 +70,7 @@ server
 方式2 用容器的nginx 暴露80端口， nginx内部用其它容器的别名作转发
 nginx 的配置文件映射到宿主机维护
 docker pull nginx:stable-alpine
-docker run --name=nginx --network=my_net1 -d -p 80:80 -v /etc/nginx/conf.d:/etc/nginx/conf.d nginx:stable-alpine
+docker run --name=nginx --network=my_net1 -d -p 80:80 -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d nginx:stable-alpine
 
 docker run --name=nginx -d nginx:stable-alpine
 ~~~
@@ -98,4 +107,4 @@ docker pull mysql:5.7
 
 docker volume create mysql_data
 
-docker run -d --name=mysql -p 3306:3306 -v mysql_data:/var/lib/mysql --network my_net1 --network-alias mysql5.7 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
+docker run -d --name=mysql -p 3306:3306 -v mysql_data:/var/lib/mysql --network my_net_db -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
