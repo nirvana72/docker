@@ -19,3 +19,9 @@ chroot /host
 
 
 
+### docker ping 不通外网
+新建一个centos容器， 检查是否能ping通外网
+查看 nameserver
+
+修改不能ping外网的容器
+vi /etc/resolv.conf
