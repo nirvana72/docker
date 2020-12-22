@@ -70,7 +70,7 @@ server
 方式2 用容器的nginx 暴露80端口， nginx内部用其它容器的别名作转发
 nginx 的配置文件映射到宿主机维护
 docker pull nginx:stable-alpine
-docker run --name=nginx --network=my_net1 -d -p 80:80 -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d nginx:stable-alpine
+docker run --name=nginx --network=my_net1 -d -p 80:80 -p 8080:8080 -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d nginx:stable-alpine
 
 docker run --name=nginx -d nginx:stable-alpine
 ~~~
