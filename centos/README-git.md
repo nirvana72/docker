@@ -64,6 +64,9 @@ yum install gitlab-ci-multi-runner
 
 # 向GitLab-CI注册runner
 gitlab-ci-multi-runner register
+
+### 也可以通过这种方式安装后升级到最新版本
+rpm -Uvh gitlab-runner_amd64.rpm
 ~~~
 
 ### 方法2 官方安装
