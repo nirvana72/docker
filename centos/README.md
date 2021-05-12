@@ -5,7 +5,7 @@
 ~~~
  # https://www.bt.cn/btcode.html
 
- docker run --name=baota -p 8888:8888 -p 3306:3306 -p 80:80 --privileged=true -v D:/workspace:/workspace -itd centos:7 /usr/sbin/init
+ docker run --name=baota20210511 -p 8888:8888 -p 80:80 -p 81:81 -p 8080:8080 -p 8081:8081 --privileged=true -v E:/workspace:/workspace -itd centos:7 /usr/sbin/init
 ~~~
 
 
