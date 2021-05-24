@@ -108,3 +108,25 @@ docker pull mysql:5.7
 docker volume create mysql_data
 
 docker run -d --name=mysql -p 3306:3306 -v mysql_data:/var/lib/mysql --network my_net_db -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
+
+## docker 日志清理
+~~~
+// 查看磁盘使用率
+df -h
+
+// 查看docker日志
+ls -lh $(find /var/lib/docker/containers/ -name *-json.log)
+
+// 停止docker
+service docker stop
+
+// 清理日志
+rm -rf [容器ID]-json.log
+
+// 重启docker
+systemctl start docker
+
+// 重启服务
+docker ps -a
+docker start [容器id]
+~~~
