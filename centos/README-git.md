@@ -33,8 +33,8 @@ git --version
 ~~~
 
 ~~~
-git config --global user.name "nirvana72"
-git config --global user.email "15279663@qq.com"
+git config --global user.name "root"
+git config --global user.email "admin@example.com"
 
 # 查看git配置
 git config --global  --list
@@ -44,7 +44,7 @@ yum install openssh-clients.x86_64
 
 # 生成公钥和私钥（用于github）
 # 生成过程中， 文件位置[可默认 /root/.ssh], 密码
-ssh-keygen -t rsa -C "15279663@qq.com"
+ssh-keygen -t rsa -C "admin@example.com"
 
 # id_rsa.pub 内容添加到github
 
@@ -69,7 +69,7 @@ gitlab-ci-multi-runner register
 rpm -Uvh gitlab-runner_amd64.rpm
 ~~~
 
-### 方法2 官方安装
+### 方法2 官方安装 推荐这种方式安装
 https://docs.gitlab.com/runner/install/linux-manually.html
 ~~~
 # 下载
