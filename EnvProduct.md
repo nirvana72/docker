@@ -18,6 +18,8 @@ docker run -d -p 9000:9000 --name=portainer -v /var/run/docker.sock:/var/run/doc
 开放9000端口
 访问 http://ip:9000
 
+如果nginx转发, 注意网络要和nginx一起
+
 ## 主机 portainer 添加 endpoint
 从机docker 开放 2375端口
 ~~~
