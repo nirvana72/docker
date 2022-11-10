@@ -6,5 +6,5 @@ COPY default.conf /etc/apache2/sites-enabled/000-default.conf
 COPY ext-custom.ini /usr/local/etc/php/conf.d/ext-custom.ini
 COPY index.php /var/www/html/index.php
 
-# docker build -t php-apache:7.4.8 .
-# docker run --name=php-demo -itd --privileged=true -p 80:80 php-apache:7.4.8
+# docker build -t php:1.0 .
+# docker run --name=php-demo -itd --privileged=true -p 80:80 php:1.0

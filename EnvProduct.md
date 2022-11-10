@@ -13,7 +13,7 @@ docker pull portainer/portainer:1.24.1-alpine
 
 创建portainer容器
 docker volume create portainer
-docker run -d -p 9000:9000 --name=portainer -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data --restart=always portainer/portainer:1.24.1-alpine 
+docker run -d -p 9000:9000 --name=portainer -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data --restart=always portainer/portainer-ce:2.16.1-alpine
 
 开放9000端口
 访问 http://ip:9000
