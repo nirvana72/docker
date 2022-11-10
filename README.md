@@ -68,11 +68,8 @@ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 # 创建卷
 docker volume create portainer
 
-# linux
-docker run -d -p 9000:9000 --name portainer -v portainer:/var/run/docker.sock portainer/portainer
+docker run --name=portainer-ce -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer-ce:/data portainer/portainer-ce:2.9.1-alpine
 
-# windows
-docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data portainer/portainer
 ~~~
 
 

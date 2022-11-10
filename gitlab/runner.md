@@ -6,6 +6,7 @@ docker exec -it gitlab-runner-1 /bin/bash
 gitlab-runner register
 
 
+// docker runner 配置
 /srv/gitlab-runner/config/config.toml
 
 [[runners]]
@@ -27,3 +28,13 @@ gitlab-runner register
     volumes = ["/cache","/var/run/docker.sock:/var/run/docker.sock"]
     shm_size = 0
 
+
+// 非docker runner 配置
+// /ect/gitlab-runner/config/toml
+
+[[runners]]
+  name = "runner-212"
+  url = "http://gitlab.lan8.cn"
+  token = "FhyxYujyP9AsYAgtt-TC"
+  executor = "shell"
+  [runners.cache]
