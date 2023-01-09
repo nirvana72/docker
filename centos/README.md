@@ -1,11 +1,14 @@
  docker run --name=centos7_test -p 9000:80 --privileged=true -v E:/workspace:/workspace -itd centos:7 /usr/sbin/init
 
 ### 宝塔
-
 ~~~
- # https://www.bt.cn/btcode.html
+https://www.bt.cn/btcode.html
 
- docker run --name=baota20211101 -p 8888:8888 -p 80:80 -p 81:81 -p 8080:8080 -p 8081:8081 --privileged=true -v E:/workspace:/workspace -itd centos:7 /usr/sbin/init
+# windows
+docker run --name=baota202301 -p 8888:8888 -p 80:80 -p 81:81 -p 8080:8080 -p 8081:8081 --privileged=true -v E:/workspace:/workspace -itd centos:7 /usr/sbin/init
+
+# Mac
+docker run --name=baota202301 -p 8888:8888 -p 80:80 -p 81:81 -p 8080:8080 -p 8081:8081 --privileged=true -v /Users/nijia/workspace:/workspace -itd centos:7 /usr/sbin/init
 ~~~
 
 
